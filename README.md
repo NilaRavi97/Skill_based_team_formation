@@ -1,6 +1,6 @@
 # Skill-Based Team Formation
 
-Forming the right team for a task means finding experts who **together cover every required skill** and who **already work well together**. This project tackles the problem on the **DBLP** computer-science collaboration network. It proposes a **Case-Based Reasoning (CBR)** approach and compares it with existing graph-based algorithms.
+Forming the right team for a task means finding experts who **together cover every required skill** and who **already work well together**. This project tackles the problem on the **DBLP** computer-science collaboration network. It implements and compares **four team formation approaches**: Case-Based Reasoning (CBR), Max-Logit, TFS and RarestFirst.
 
 ## Problem
 
@@ -24,28 +24,18 @@ Given a task (a set of required skills) and a social network of experts, find a 
 
 ## Approaches
 
-### Proposed: Case-Based Reasoning (CBR)
-Past publications are treated as solved "cases": the skills a paper needed and the authors who delivered it.
+Four approaches are implemented and compared:
 
-```mermaid
-flowchart LR
-    Q["New task<br/>(required skills)"] --> R["Retrieve<br/>similar publications<br/>(Jaccard similarity)"]
-    R --> U["Reuse<br/>authors who cover<br/>all skills"]
-    U -->|not enough| V["Revise<br/>rank by skill-relevant pubs,<br/>total pubs, graph closeness"]
-    U --> T["Team"]
-    V --> T
-```
-
-### Baselines
-| Algorithm | Idea |
-|-----------|------|
-| **Max-Logit** | Randomised local search: swaps one member at a time and accepts changes with a probability based on team diameter |
-| **TFS** | Community-based: picks well-connected leaders, then adds the closest experts within *k* hops |
-| **RarestFirst** | Starts from experts with the rarest skill, then adds the closest expert for each remaining skill |
+| # | Approach | Idea |
+|---|----------|------|
+| 1 | **Case-Based Reasoning (CBR)** | Reuses past publications as solved cases: finds papers that needed similar skills and builds the team from their authors |
+| 2 | **Max-Logit** | Randomised local search: swaps one member at a time and accepts changes with a probability based on team diameter |
+| 3 | **TFS (TPL closest)** | Community-based: picks well-connected leaders, then adds the closest experts within *k* hops |
+| 4 | **RarestFirst** | Starts from experts with the rarest skill, then adds the closest expert for each remaining skill |
 
 ## Experiments
 
-For tasks of **4–11 random skills** (10 random tasks per size), the teams from each algorithm are compared on:
+For tasks of **4–11 random skills** (10 random tasks per size), the teams formed by the four approaches are compared on:
 
 | Folder | Metric |
 |--------|--------|
@@ -74,6 +64,4 @@ RCS_26_3c_<experiment>/
 ├── utilities.py         # Graph helpers
 └── data/                # DBLP dataset
 ```
-```
-
-**Tech:** Python · NetworkX · pandas · Matplotlib
+· pandas · Matplotlib
