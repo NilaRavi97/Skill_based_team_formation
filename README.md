@@ -64,4 +64,4 @@ RCS_26_3c_<experiment>/
 ├── utilities.py         # Graph helpers
 └── data/                # DBLP dataset
 ```
-· pandas · Matplotlib
+Tech Stack: Python · NetworkX · pandas · Matplotlib
