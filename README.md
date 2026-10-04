@@ -1,5 +1,7 @@
 # Skill-Based Team Formation
 
+Research Case Studies Project, 2023
+
 Forming the right team for a task means finding experts who **together cover every required skill** and who **already work well together**. This project tackles the problem on the **DBLP** computer-science collaboration network. It implements and compares **four team formation approaches**: Case-Based Reasoning (CBR), Max-Logit, TFS and RarestFirst.
 
 ## Problem
